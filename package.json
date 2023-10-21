@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/koolkishan/nextjs-amazon-clone#readme",
   "dependencies": {
-    "qs": "^6.11.2"
+    "qs": "^6.11.2",
+    "rxjs": "^7"
   }
 }
