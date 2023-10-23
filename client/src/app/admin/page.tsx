@@ -8,11 +8,7 @@ const Page = () => {
   useEffect(() => {
     router.push("/admin/dashboard");
   });
-  return (
-    <div>
-      <Side />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Page;

@@ -35,7 +35,9 @@ export default function Page() {
               type="email"
               label="Category Name"
               variant="bordered"
+              className="border-dark"
               value={category}
+              placeholder="Add Name of the category"
               onChange={(e) => setCategory(e.target.value)}
             />
           </div>
