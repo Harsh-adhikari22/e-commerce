@@ -1,6 +1,7 @@
 "use client";
 import { login } from "@/lib/api/auth";
 import { useAppStore } from "@/store/store";
+import { AxiosError, AxiosResponse } from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,14 +11,19 @@ const page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const { setUserInfo } = useAppStore();
+  const { setUserInfo, setToast } = useAppStore();
   const handleLogin = async () => {
     if (email && password) {
-      const response = await login(email, password);
-      if (response?.username) {
-        setUserInfo(response.data);
-        router.push("/admin");
+      const response: AxiosResponse = await login(email, password);
+      if (response instanceof AxiosError) {
+        setToast(response?.response?.data.message);
       }
+      if (response?.username) {
+        setUserInfo(response);
+        router.push("/admin/");
+      }
+    } else {
+      setToast("Email and Password is required to login.");
     }
   };
   return (
