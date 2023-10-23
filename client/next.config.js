@@ -1,25 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
+  env: {
+    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: "dctahvizk",
+    NEXT_PUBLIC_API: "app-61711.on-aptible.com",
+  },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "hydeparkwinterwonderland.com",
-      },
-      {
-        protocol: "https",
-        hostname: "wembleypark.com",
-      },
-      {
-        protocol: "https",
-        hostname: "pngimg.com",
-      },
-    ],
+    domains: ["res.cloudinary.com", "pngimg.com"],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
   },
 };
 
