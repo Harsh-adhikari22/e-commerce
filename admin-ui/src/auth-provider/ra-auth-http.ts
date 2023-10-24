@@ -24,7 +24,6 @@ export const httpAuthProvider: AuthProvider = {
         ...credentials,
       },
     });
-
     if (userData && userData.data?.login.username) {
       localStorage.setItem(
         CREDENTIALS_LOCAL_STORAGE_ITEM,
