@@ -21,11 +21,13 @@ interface ProductData {
   };
   colors: string[];
   description: string[];
-  discountPrice: number;
+  discountprice: number;
   images: string[];
-  salePrice: number;
+  titleprice: number;
   title: string;
   variants: string[];
+  carbonfootprint: number;
+  susscore: number;
 }
 
 interface Category {
@@ -39,13 +41,15 @@ const Page = () => {
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [descriptions, setDescriptions] = useState<string[]>([]);
-  const [salePrice, setSalePrice] = useState<string>("0");
+  const [titleprice, settitlePrice] = useState<string>("0");
   const [discountedPrice, setDiscountedPrice] = useState<string>("0");
   const [variants, setVariants] = useState<string[]>([]);
   const [variant, setVariant] = useState<string>("");
   const [colors, setColors] = useState<string[]>([]);
   const [color, setColor] = useState<string>("");
   const [category, setCategory] = useState<Set<string>>(new Set());
+  const [carbonfootprint, setcarbonfootprint] = useState<string>("0");
+  const [susscore, setsusscore] = useState<string>("0");
 
   const addDescription = () => {
     setDescriptions([...descriptions, description]);
@@ -73,10 +77,12 @@ const Page = () => {
       },
       colors,
       description: descriptions,
-      discountPrice: parseInt(discountedPrice),
+      discountprice: parseInt(discountedPrice),
       images: photos,
-      salePrice: parseInt(salePrice),
+      titleprice: parseInt(titleprice),
       title: name,
+      carbonfootprint: Number(carbonfootprint),
+      susscore: Number(susscore),
       variants,
     };
 
@@ -151,8 +157,8 @@ const Page = () => {
               labelPlacement="outside"
               size="lg"
               placeholder="Enter sale price"
-              value={salePrice}
-              onChange={(e) => setSalePrice(e.target.value)}
+              value={titleprice}
+              onChange={(e) => settitlePrice(e.target.value)}
             />
             <Input
               type="number"
@@ -163,6 +169,26 @@ const Page = () => {
               placeholder="Enter discounted price"
               value={discountedPrice}
               onChange={(e) => setDiscountedPrice(e.target.value)}
+            />
+            <Input
+              type="number"
+              label="Carbon Footprint"
+              variant="bordered"
+              labelPlacement="outside"
+              size="lg"
+              placeholder="Enter Carbon Footprint"
+              value={carbonfootprint}
+              onChange={(e) => setcarbonfootprint(e.target.value)}
+            />
+            <Input
+              type="number"
+              label="Sustainability Score"
+              variant="bordered"
+              labelPlacement="outside"
+              size="lg"
+              placeholder="Enter Sustainability Score"
+              value={susscore}
+              onChange={(e) => setsusscore(e.target.value)}
             />
             <div className="flex flex-col gap-5">
               <div className="flex gap-5">
@@ -228,7 +254,7 @@ const Page = () => {
             <CldUploadButton
               options={{ multiple: true }}
               onUpload={handleUpload}
-              uploadPreset="kmsiloa7"
+              uploadPreset="ml_default"
             >
               <span className="bg-amazon-primary py-3 mt-6  px-5 text-white text-base font-medium rounded-md cursor-pointer">
                 Upload Images

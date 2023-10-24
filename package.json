@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/koolkishan/nextjs-amazon-clone#readme",
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@nextui-org/react": "^2.1.13",
     "@prisma/client": "^5.4.2",
     "@types/react": "^18.2.31",

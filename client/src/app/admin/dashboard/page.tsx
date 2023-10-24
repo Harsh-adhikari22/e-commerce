@@ -40,7 +40,13 @@ const Page = () => {
   return (
     <>
       {isLoaded && (
-        <div className="m-10">
+        <div
+          className="m-10"
+          style={{
+            position: "fixed",
+            paddingLeft: "100vh",
+          }}
+        >
           <div className="flex justify-between gap-5">
             <Stats title="Total category" data={stats.category} />
             <Stats title="Total products" data={stats.products} />
